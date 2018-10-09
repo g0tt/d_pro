@@ -3,8 +3,11 @@ var path = require('path');
 var webpack = require('webpack');
 
 module.exports = {
-    entry: './src/main.jsx',
-    output: { path: path.join(__dirname, 'dist'), filename: 'bundle.js' },
+    entry: {
+        "desktop_lighter": "./src/DesktopLighter.jsx",
+        "s_remo": "./src/sRemo.jsx",
+    },
+    output: { path: path.join(__dirname, 'dist'), filename: '[name].bundle.js' },
     module: {
         rules: [
             {
