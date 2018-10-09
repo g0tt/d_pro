@@ -2,13 +2,18 @@
 import React from 'react';
 import { render } from 'react-dom';
 
-import Hello from './components/hello.jsx';
-import World from './components/world.jsx';
+import DesktopLighter from './components/DesktopLighter.jsx';
+import SRemo from './components/sRemo.jsx';
 
 render(
     <div>
-        <Hello />
-        <World />
+        <SRemo />
     </div>,
-    document.getElementById('app')
+    document.getElementById('sRemo')
+);
+render(
+    <div>
+        <DesktopLighter />
+    </div>,
+    document.getElementById('DesktopLighter')
 );
