@@ -1,0 +1,104 @@
+
+.sqbut label{
+	display: inline-block;
+	padding: 0.5em 1em;
+	text-decoration: none;
+	background: #f7f7f7;
+	border-left: solid 6px #ff7c5c;/*¶ü*/
+	color: #ff7c5c;/*•¶šF*/
+	font-weight: bold;
+	box-shadow: 0px 2px 2px rgba(0, 0, 0, 0.29);
+}
+
+.sqbut label:hover{
+	background: #f1f1f1;
+	cursor: pointer;
+}
+
+.sqbut label:active {
+	box-shadow: inset 0 0 2px rgba(128, 128, 128, 0.1);
+	transform: translateY(2px);
+}
+
+.sqbut input {
+	display: none;
+}
+
+.sqbut input ~ div{
+	opacity: 0;
+}
+
+.sqbut input:checked ~ div {
+	opacity: 1;
+}
+
+.deslig {
+    position:absolute;
+    left:25%;
+    right:25%;
+    width: 50%;
+}
+
+.deslig a#close1{
+    position: absolute;
+    top: 0px;
+    left: 50%; 
+    box-shadow: 0px 0px 0px 1px rgb(0, 0, 0) inset;
+}
+
+    .deslig a#close2 {
+        position: absolute;
+        top: 75px;
+        left: 50%;
+        box-shadow: 0px 0px 0px 1px rgb(0, 0, 0) inset;
+    }
+
+
+    .deslig a#hamburger1 {
+        position: absolute;
+        top: 0px;
+        left: calc(50% - 100px);
+        box-shadow: 0px 0px 0px 1px rgb(0, 0, 0) inset;
+    }
+
+    .deslig a#slider {
+        position: absolute;
+        top: 100px;
+        left: calc(50% - 100px);
+        box-shadow: 0px 0px 0px 1px rgb(0, 0, 0) inset;
+    }
+
+
+    /* “§‰ßÏ‚İ‰æ‘œ‚É‰e‚ğ‚Â‚¯‚é‚Ì‚Åboxshadow‚Å‚Í‚È‚­filter:drop-shadow()‚ğg‚¤ */
+    .deslig a#tsumami {
+        position: absolute;
+        top: 175px;
+        left: calc(50% - 59px);
+        filter: drop-shadow(0px 0px 1px rgb(0, 0, 0));
+    } 
+
+/* ‚±‚Ì‚Ü‚Ü‚¾‚Æimage‚Íbox-shadow‚ÌŒã‚É•`‚©‚ê‚Äshadow‚ªŒ©‚¦‚È‚¢‚Ì‚ÅAimage‚Ìlayer‚ğˆê‚Â—‚Æ‚· */
+.deslig a#close1 img {
+    position:relative;
+    z-index: -1;
+}
+
+    .deslig a#close2 img {
+        position: relative;
+        z-index: -1;
+    }
+    .deslig a#hamburger1 img {
+        position: relative;
+        z-index: -1;
+    }
+    .deslig a#slider img {
+        position: relative;
+        z-index: -1;
+    }
+    .deslig a#tsumami img {
+        position: relative;
+        z-index: -1;
+    }
+
+
+
