@@ -37,16 +37,17 @@
     left:25%;
     right:25%;
     width: 50%;
+    user-select:none;
 }
 
-.deslig a#close1{
+.deslig div#close1{
     position: absolute;
     top: 0px;
     left: 50%; 
     box-shadow: 0px 0px 0px 1px rgb(0, 0, 0) inset;
 }
 
-    .deslig a#close2 {
+    .deslig div#close2 {
         position: absolute;
         top: 75px;
         left: 50%;
@@ -54,14 +55,14 @@
     }
 
 
-    .deslig a#hamburger1 {
+    .deslig div#hamburger1 {
         position: absolute;
         top: 0px;
         left: calc(50% - 100px);
         box-shadow: 0px 0px 0px 1px rgb(0, 0, 0) inset;
     }
 
-    .deslig a#slider {
+    .deslig div#slider {
         position: absolute;
         top: 100px;
         left: calc(50% - 100px);
@@ -70,35 +71,47 @@
 
 
     /* 透過済み画像に影をつけるのでboxshadowではなくfilter:drop-shadow()を使う */
-    .deslig a#tsumami {
+    .deslig div#tsumami {
         position: absolute;
+        /*
         top: 175px;
         left: calc(50% - 59px);
+            */
+        top: -10px;
+        left: calc(50% - 12px);
         filter: drop-shadow(0px 0px 1px rgb(0, 0, 0));
-    } 
+    }
 
 /* このままだとimageはbox-shadowの後に描かれてshadowが見えないので、imageのlayerを一つ落とす */
-.deslig a#close1 img {
+.deslig div#close1 img {
     position:relative;
     z-index: -1;
 }
 
-    .deslig a#close2 img {
+    .deslig div#close2 img {
         position: relative;
         z-index: -1;
     }
-    .deslig a#hamburger1 img {
+    .deslig div#hamburger1 img {
         position: relative;
         z-index: -1;
     }
-    .deslig a#slider img {
+    .deslig div#slider img {
         position: relative;
         z-index: -1;
     }
-    .deslig a#tsumami img {
+    .deslig div#tsumami img {
         position: relative;
-        z-index: -1;
+        z-index: 0;
     }
 
+    /*ここからスライダー*/
 
+.scrollbar {
+    position: absolute;
+    height: 300px;
+    width: 25px;
+    top: 150px;
+    left: calc(50% - 59px);
+}
 

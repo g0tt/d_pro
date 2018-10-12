@@ -14,18 +14,21 @@
                 <div class="hidden">
                     <br>
                     次のソフトの画面を閉じて下さい。<br>
-                                    <div class="deslig">
+                    <div class="deslig">
 
-                                        <a href="#" onclick="CloseButton();" id="close1"><img src="./images/closebutton1.png" width="100" ; height="75"></a>
-                                        <a href="#" onclick="CloseButton();" id="close2"><img src="./images/closebutton2.png" width="100" ; height="25"></a>
-                                        <a href="#" id="hamburger1"><img src="./images/hamburger.png" width="100" ; height="100"></a>
-                                        <a href="#" id="slider"><img src="./images/slider.png" width="200" ; height="400"></a>
-                                        <a href="#" onclick="CloseButton();" id="tsumami"><img src="./images/tsumami.png" width="25" ; height="25"></a>
-                                    </div>
+                        <div onclick="CloseButton();" id="close1"><img src="./images/closebutton1.png" width="100" ; height="75"></div>
+                        <div onclick="CloseButton();" id="close2"><img src="./images/closebutton2.png" width="100" ; height="25"></div>
+                        <div id="hamburger1"><img src="./images/hamburger.png" width="100" ; height="100"></div>
+                        <div id="slider"><img src="./images/slider.png" width="200" ; height="400" draggable="false"></div>
+                        <div class="scrollbar">
+                            <!--<script>window.ondrag = CatchTsumami;</script>-->
+                            <div id="tsumami"><img src="./images/tsumami.png" ondrag="CatchTsumami(event)" ondragend="CatchTsumami(event)" width="25" height="25" id="tsumamiimg"></div>
+                        </div>
+                    </div>
 
                 </div>
             </div>
-
+            <div id="output"></div>
         </div>
     </center>
 </body>
