@@ -19,21 +19,48 @@ function CloseButton() {
 
 
 function CatchTsumami(event) {
-    var target = document.getElementById("tsumamiimg");
     var event2 = event || window.event;
-    WriteOutput(event2.pageY);
 
     var yplace = event2.pageY;
+    WriteOutput(yplace);
+
     if (yplace > 550) {
-        target.style.top = 300;
+        event2.target.style.top = 300 + "px";
     }
     else if (yplace < 250) {
-        target.style.top = 0;
+        event2.target.style.top = 0 + "px";
     }
     else {
-        target.style.top = yplace - 250;
+        event2.target.style.top = (yplace - 250) + "px";
     }
 }
+
+function CatchTsumamiS(event) {
+    var yplace = event.targetTouches[0].pageY;
+    WriteOutput(yplace);
+
+    if (yplace > 550) {
+        event2.target.style.top = 300 + "px";
+    }
+    else if (yplace < 250) {
+        event2.target.style.top = 0 + "px";
+    }
+    else {
+        event2.target.style.top = (yplace - 250) + "px";
+    }
+}
+
+
+document.addEventListener('DOMContentLoaded', function () {
+    var tsumami = document.getElementById("tsumamiimg");
+    tsumami.ondrag = CatchTsumami;
+    tsumami.ondragend = CatchTsumami;
+    tsumami.ontouchmove = CatchTsumamiS;
+    tsumami.ontouchend = CatchTsumamiS;
+
+
+}, false);
+
 
 function handleMouseMove(event) {
     event2 = event || window.event; // IE‘Î‰ž
