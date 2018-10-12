@@ -1,4 +1,8 @@
 
+#main {
+    height: 100vh;/*スマホでスクロールできるように*/
+}
+
 .sqbut label{
 	display: inline-block;
 	padding: 0.5em 1em;

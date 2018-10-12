@@ -41,13 +41,13 @@ function CatchTsumamiS(event) {
     WriteOutput(yplace);
 
     if (yplace > 550) {
-        event.target.style.top = 300 + "px";
+        event2.target.style.top = 300 + "px";
     }
     else if (yplace < 250) {
-        event.target.style.top = 0 + "px";
+        event2.target.style.top = 0 + "px";
     }
     else {
-        event.target.style.top = (yplace - 250) + "px";
+        event2.target.style.top = (yplace - 250) + "px";
     }
 }
 
