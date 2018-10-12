@@ -37,23 +37,25 @@
 }
 
 .deslig {
-    position:absolute;
-    left:25%;
-    right:25%;
-    width: 50%;
-    user-select:none;
+    position: absolute;
+    left: Calc(50% - 200px);
+    width: 400px;
+    height: 600px;
+    box-shadow: 0px 0px 20px 30px #ffffff inset;
+    user-select: none;
+    z-index: 2;
 }
 
 .deslig div#close1{
     position: absolute;
-    top: 0px;
+    top: 50px;
     left: 50%; 
     box-shadow: 0px 0px 0px 1px rgb(0, 0, 0) inset;
 }
 
     .deslig div#close2 {
         position: absolute;
-        top: 75px;
+        top: 125px;
         left: 50%;
         box-shadow: 0px 0px 0px 1px rgb(0, 0, 0) inset;
     }
@@ -61,14 +63,14 @@
 
     .deslig div#hamburger1 {
         position: absolute;
-        top: 0px;
+        top: 50px;
         left: calc(50% - 100px);
         box-shadow: 0px 0px 0px 1px rgb(0, 0, 0) inset;
     }
 
     .deslig div#slider {
         position: absolute;
-        top: 100px;
+        top: 150px;
         left: calc(50% - 100px);
         box-shadow: 0px 0px 0px 1px rgb(0, 0, 0) inset;
     }
@@ -77,11 +79,7 @@
     /* ìßâﬂçœÇ›âÊëúÇ…âeÇÇ¬ÇØÇÈÇÃÇ≈boxshadowÇ≈ÇÕÇ»Ç≠filter:drop-shadow()ÇégÇ§ */
     .deslig div#tsumami {
         position: absolute;
-        /*
-        top: 175px;
-        left: calc(50% - 59px);
-            */
-        top: -10px;
+        top: 40px;
         left: calc(50% - 12px);
         filter: drop-shadow(0px 0px 1px rgb(0, 0, 0));
     }
