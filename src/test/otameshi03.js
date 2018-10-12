@@ -36,17 +36,18 @@ function CatchTsumami(event) {
 }
 
 function CatchTsumamiS(event) {
+    var event2 = event.targetTouches[0];
     var yplace = event.targetTouches[0].pageY;
     WriteOutput(yplace);
 
     if (yplace > 550) {
-        event2.target.style.top = 300 + "px";
+        event.target.style.top = 300 + "px";
     }
     else if (yplace < 250) {
-        event2.target.style.top = 0 + "px";
+        event.target.style.top = 0 + "px";
     }
     else {
-        event2.target.style.top = (yplace - 250) + "px";
+        event.target.style.top = (yplace - 250) + "px";
     }
 }
 
