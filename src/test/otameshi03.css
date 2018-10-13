@@ -30,10 +30,12 @@
 
 .sqbut input ~ div{
 	opacity: 0;
+    visibility:hidden;
 }
 
 .sqbut input:checked ~ div {
 	opacity: 1;
+    visibility:visible;
 }
 
 .deslig {

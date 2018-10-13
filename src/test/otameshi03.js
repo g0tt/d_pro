@@ -8,12 +8,12 @@ var endtime;
 var workmsec;
 var mousey;
 
+var buttonimgsize;
 var buttonsizesm;
 
 function StartButton(){
 	starttime = Date.now();
 }
-
 
 function CloseButton() {
     endtime = Date.now();
@@ -37,13 +37,14 @@ var tsumamiiniypos;
 function CatchTsumami(event) {
     var event2 = event || window.event;
     var yplace = event2.pageY;
+    WriteOutput(yplace);
     MoveTsumami(yplace, event2.target);
 }
 
 /* PCでつまみを掴んだ直後 */
 function CatchTsumamiSta(event) {
     catchypos = (event || window.event).pageY;
-    tsumamiiniypos = parseInt(document.getElementById("tsumamiimg").style.top) || 0;
+    tsumamiiniypos = Math.max(parseInt(document.getElementById("tsumamiimg").style.top) || 0, 0);
     WriteOutput(tsumamiiniypos);
 }
 
@@ -94,6 +95,9 @@ function MoveTsumamiS(yplace, targ) {
     ChangeBrightness(ypos, 0);
 }
 
+function DeleteHamb() {
+    document.getElementById("hamburger1").style.display = "none";
+}
 
 document.addEventListener('DOMContentLoaded', function () {
     var tsumami = document.getElementById("tsumamiimg");
@@ -109,6 +113,12 @@ document.addEventListener('DOMContentLoaded', function () {
     close1.onclick = CloseButton;
     close2.onclick = CloseButton;
 
+    /* つまみの画像の大きさとPCでのつまみの当たり判定の調節 */
+    buttonimgsize = 50;
+    tsumami.style.width = buttonimgsize;
+    tsumami.style.height = buttonimgsize;
+
+    /* スマホでのつまみの当たり判定の調節 */
     buttonsizesm = 75;
     tsumamit.style.top = (buttonsizesm / 2 + 27.5) + "px";
     tsumamit.style.width = buttonsizesm + "px";
