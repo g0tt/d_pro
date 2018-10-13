@@ -1,9 +1,14 @@
+﻿
+var shownmission;
+var answertime;
 
 
 var starttime;
 var endtime;
 var workmsec;
 var mousey;
+
+var buttonsizesm;
 
 function StartButton(){
 	starttime = Date.now();
@@ -15,32 +20,75 @@ function CloseButton() {
     workmsec = endtime - starttime;
     var writeplace = document.getElementsByClassName("hidden");
     WriteOutput(workmsec.toString());
+    ClearMission(document.getElementsByClassName("deslig")[0], workmsec);
 }   
 
+function ClearMission(target, cleartime) {
+    var clearhtml1 = '<div class=\"box10\" style=\"';
+    var clearcss = 'width: 150px; padding: 0.5em 1em; margin: 2em 0; color: #00BCD4; background: #e4fcff; border-top: solid 6px #1dc1d6; box-shadow: 0 3px 4px rgba(0, 0, 0, 0.32);'
+    var clearhtml2 = '\"><p style=\"margin: 0;padding: 0;\">' + cleartime / 1000 + "秒でクリア" + "</p></div >";
+    target.innerHTML = clearhtml1 + clearcss + clearhtml2;
+}
 
+var catchypos;
+var tsumamiiniypos;
+
+/* PCでつまみを動かしているとき */
 function CatchTsumami(event) {
     var event2 = event || window.event;
     var yplace = event2.pageY;
     MoveTsumami(yplace, event2.target);
 }
 
+/* PCでつまみを掴んだ直後 */
+function CatchTsumamiSta(event) {
+    catchypos = (event || window.event).pageY;
+    tsumamiiniypos = parseInt(document.getElementById("tsumamiimg").style.top) || 0;
+    WriteOutput(tsumamiiniypos);
+}
+
+
+/* スマホでつまみを動かしているとき */
 function CatchTsumamiS(event) {
     var event2 = event.targetTouches[0];
     var yplace = event2.pageY;
-    MoveTsumami(yplace, event2.target);
+    MoveTsumamiS(yplace, document.getElementById("tsumami"));
+}
+
+/* スマホでつまみを掴んだ直後 */
+function CatchTsumamiSS(event) {
+    catchypos = event.targetTouches[0].pageY;
+    tsumamiiniypos = parseInt(document.getElementById("tsumami").style.top);
+    WriteOutput(tsumamiiniypos);
 }
 
 function MoveTsumami(yplace, targ) {
-    WriteOutput(yplace);
+    yplace += (tsumamiiniypos - catchypos);
     var ypos;
-    if (yplace > 600) {
-        ypos = 300;
+    if (yplace > 275) {
+        ypos = 275;
     }
-    else if (yplace < 300) {
-        ypos = 0;
+    else if (yplace < -25) {
+        ypos = -25;
     }
     else {
-        ypos = yplace - 300;
+        ypos = yplace;
+    }
+    targ.style.top = ypos + "px";
+    ChangeBrightness(ypos, 0);
+}
+
+function MoveTsumamiS(yplace, targ) {
+    yplace += (tsumamiiniypos - catchypos);
+    var ypos;
+    if (yplace > 337.5) {
+        ypos = 337.5;
+    }
+    else if (yplace < 37.5) {
+        ypos = 37.5;
+    }
+    else {
+        ypos = yplace;
     }
     targ.style.top = ypos + "px";
     ChangeBrightness(ypos, 0);
@@ -49,21 +97,29 @@ function MoveTsumami(yplace, targ) {
 
 document.addEventListener('DOMContentLoaded', function () {
     var tsumami = document.getElementById("tsumamiimg");
+    var tsumamit = document.getElementById("tsumami");
     var close1 = document.getElementById("close1");
     var close2 = document.getElementById("close2");
 
+    tsumami.ondragstart = CatchTsumamiSta;
     tsumami.ondrag = CatchTsumami;
     tsumami.ondragend = CatchTsumami;
-    tsumami.ontouchmove = CatchTsumamiS;
-    tsumami.ontouchend = CatchTsumamiS;
+    tsumamit.ontouchstart = CatchTsumamiSS;
+    tsumamit.ontouchmove = CatchTsumamiS;
     close1.onclick = CloseButton;
     close2.onclick = CloseButton;
 
+    buttonsizesm = 75;
+    tsumamit.style.top = (buttonsizesm / 2 + 27.5) + "px";
+    tsumamit.style.width = buttonsizesm + "px";
+    tsumamit.style.height = buttonsizesm + "px";
+    tsumamit.style.left = "calc(50% - " + (buttonsizesm - 1) / 2 + "px)";
+    ChangeBrightness((buttonsizesm / 2 + 27.5), 0);
 }, false);
 
 
 function handleMouseMove(event) {
-    event2 = event || window.event; // IE�Ή�
+    event2 = event || window.event; // IE対応
     WriteOutput(event2.clientY);
 }
 

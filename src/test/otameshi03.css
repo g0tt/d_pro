@@ -79,8 +79,6 @@
     /* “§‰ßÏ‚İ‰æ‘œ‚É‰e‚ğ‚Â‚¯‚é‚Ì‚Åboxshadow‚Å‚Í‚È‚­filter:drop-shadow()‚ğg‚¤ */
     .deslig div#tsumami {
         position: absolute;
-        top: 40px;
-        left: calc(50% - 12px);
         filter: drop-shadow(0px 0px 1px rgb(0, 0, 0));
     }
 
