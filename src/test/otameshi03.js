@@ -18,13 +18,29 @@ function StartButton(){
 function CloseButton() {
     endtime = Date.now();
     workmsec = endtime - starttime;
-    ClearMission(document.getElementsByClassName("deslig")[0], workmsec);
+    var target = document.getElementsByClassName("hidden")[0];
+    var target2 = document.getElementById("chebut");
+    ClearMission(target, workmsec);
+    target2.checked = false;
+    target.style.opacity = "1";
+    target.style.visibility = "visible";
+}   
+
+function CloseButton4() {
+    endtime = Date.now();
+    workmsec = endtime - starttime;
+    var target = document.getElementsByClassName("hidden")[1];
+    var target2 = document.getElementById("chebut2");
+    ClearMission(target, workmsec);
+    target2.checked = false;
+    target.style.opacity = "1";
+    target.style.visibility = "visible";
 }   
 
 function ClearMission(target, cleartime) {
-    var clearhtml1 = '<div class=\"box10\" style=\"';
+    var clearhtml1 = '<div class="deslig"><div class=\"box10\" style=\"';
     var clearcss = 'width: 150px; padding: 0.5em 1em; margin: 2em 0; color: #00BCD4; background: #e4fcff; border-top: solid 6px #1dc1d6; box-shadow: 0 3px 4px rgba(0, 0, 0, 0.32);'
-    var clearhtml2 = '\"><p style=\"margin: 0;padding: 0;\">' + cleartime / 1000 + "秒でクリア" + "</p></div >";
+    var clearhtml2 = '\"><p style=\"margin: 0;padding: 0;\">' + cleartime / 1000 + "秒でクリア" + "</p></div></div>";
     target.innerHTML = clearhtml1 + clearcss + clearhtml2;
 }
 
@@ -127,6 +143,11 @@ function ApplyShadowAndStyle(id, stylestr, zind) {
     ApplyShadowToImage(id, zind);
 }
 
+function ApplyClickEvent(id, func) {
+    var target = document.getElementById(id);
+    target.onclick = func;
+}
+
 function SetTsumamiStyle(id, imgsize, sizesm) {
     var targetsm = document.getElementById(id);
     var targetpc = targetsm.getElementsByTagName("img")[0]; 
@@ -161,15 +182,11 @@ document.addEventListener('DOMContentLoaded', function () {
     var shadowsty = "box-shadow: 0px 0px 0px 1px rgb(0, 0, 0) inset;";
     var close1sty = "position: absolute; height: 75px; top: 50px; left: 50%;" + shadowsty;
     var close2sty = "position: absolute; height: 25px; top: 125px; left: 50%;" + shadowsty;
+    var close4sty = "position: absolute; height: 100px; top: 50px; left: 50%;" + shadowsty;
+
     var hamburgersty = "position: absolute; height: 100px ;top: 50px; left: calc(50% - 100px);" + shadowsty;
     var slidersty = "position: absolute; height: 400px ;top: 150px; left: calc(50% - 100px);" + shadowsty;
     var tsumamisty = "position: absolute;filter: drop-shadow(0px 0px 1px rgb(0, 0, 0));";
-
-    ApplyShadowAndStyle("close1_2", close1sty, -1);
-    ApplyShadowAndStyle("close2_2", close2sty, -1);
-    ApplyShadowAndStyle("hamburger1_2", hamburgersty, -1);
-    ApplyShadowAndStyle("slider_2", slidersty, -1);
-    ApplyShadowAndStyle("tsumami_2", tsumamisty, 0);
 
     ApplyShadowAndStyle("close1", close1sty, -1);
     ApplyShadowAndStyle("close2", close2sty, -1);
@@ -177,14 +194,25 @@ document.addEventListener('DOMContentLoaded', function () {
     ApplyShadowAndStyle("slider", slidersty, -1);
     ApplyShadowAndStyle("tsumami", tsumamisty, 0);
 
-    var close1 = document.getElementById("close1");
-    var close2 = document.getElementById("close2");
+    ApplyShadowAndStyle("close4", close4sty, -1);
+    ApplyShadowAndStyle("hamburger1_2", hamburgersty, -1);
+    ApplyShadowAndStyle("slider_2", slidersty, -1);
+    ApplyShadowAndStyle("tsumami_2", tsumamisty, 0);
+
+    ApplyShadowAndStyle("close4_2", close4sty, -1);
+    ApplyShadowAndStyle("hamburger1_3", hamburgersty, -1);
+    ApplyShadowAndStyle("slider_3", slidersty, -1);
+    ApplyShadowAndStyle("tsumami_3", tsumamisty, 0);
+    
+    ApplyClickEvent("close1", CloseButton);
+    ApplyClickEvent("close2", CloseButton);
+    ApplyClickEvent("close4", CloseButton4);
+
+
 
     SetNormalSlider("tsumami", 0);
     SetNormalSlider("tsumami_2", 1);
-
-    close1.onclick = CloseButton;
-    close2.onclick = CloseButton;
+    SetNormalSlider("tsumami_3", 2);
 
 
     /* つまみサイズと初期位置、当たり判定の調節*/
@@ -192,6 +220,7 @@ document.addEventListener('DOMContentLoaded', function () {
     buttonsizesm = 75;
     SetTsumamiStyle("tsumami", buttonimgsize, buttonsizesm);
     SetTsumamiStyle("tsumami_2", buttonimgsize, buttonsizesm);
+    SetTsumamiStyle("tsumami_3", buttonimgsize, buttonsizesm);
 
 }, false);
 
