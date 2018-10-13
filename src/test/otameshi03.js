@@ -41,21 +41,26 @@ function CatchTsumami(event, changeind) {
 /* PCでつまみを掴んだ直後 */
 function CatchTsumamiSta(event) {
     catchypos = (event || window.event).pageY;
-    tsumamiiniypos = Math.max(parseInt(document.getElementById("tsumamiimg").style.top) || 0, 0);
+    tsumamiiniypos = Math.max(parseInt((event || window.event).target.style.top) || 0, 0);
 }
 
 
 /* スマホでつまみを動かしているとき */
-function CatchTsumamiS(event, changeind) {
+function CatchTsumamiS(event, changeind, id) {
     var event2 = event.targetTouches[0];
     var yplace = event2.pageY;
-    MoveTsumamiS(yplace, document.getElementById("tsumami"), changeind);
+    MoveTsumamiS(yplace, document.getElementById(id), changeind);
 }
 
 /* スマホでつまみを掴んだ直後 */
-function CatchTsumamiSS(event) {
+function CatchTsumamiSS(event, id) {
     catchypos = event.targetTouches[0].pageY;
-    tsumamiiniypos = parseInt(document.getElementById("tsumami").style.top);
+    tsumamiiniypos = parseInt(document.getElementById(id).style.top);
+    document.getElementsByTagName("body")[0].style.overflow = "hidden"; /* つまみをつかんでいる間はページがスクロールしないようにする */
+}
+
+function CatchTsumamiSE() {
+    document.getElementsByTagName("body")[0].style.overflow = "scroll";
 }
 
 function MoveTsumami(yplace, targ, changeind) {
@@ -145,8 +150,9 @@ function SetNormalSlider(id, changeind) {
     targetpc.ondragstart = CatchTsumamiSta;
     targetpc.ondrag = function (event) { CatchTsumami(event, changeind); };
     targetpc.ondragend = function (event) { CatchTsumami(event, changeind); };
-    targetsm.ontouchstart = CatchTsumamiSS;
-    targetsm.ontouchmove = function (event) { CatchTsumamiS(event, changeind); };
+    targetsm.ontouchstart = function (event) { CatchTsumamiSS(event, id); };
+    targetsm.ontouchmove = function (event) { CatchTsumamiS(event, changeind, id); };
+    targetsm.ontouchend = CatchTsumamiSE;
 }
 
 document.addEventListener('DOMContentLoaded', function () {
