@@ -1,5 +1,6 @@
 import React from 'react';
 import _ from 'lodash-es';
+import axios from 'axios';
 import Notification from './Notification.jsx'
 
 export default class ListView extends React.Component {
@@ -91,12 +92,22 @@ export default class ListView extends React.Component {
     clear() {
         var end = Date.now();
         var workmsec = end - this.start;
-        alert("Congrats! Time: " + workmsec);
+        var data = {
+            data: {
+                problem: this.props.problem,
+                time: workmsec
+            }
+        };
+
+        axios.post('http://localhost:3000/api/timer', data).then(response => {
+            console.log('body:', response.data);
+        });
+        alert("Congrats! Time: " + workmsec + "ms");
     }
 
     render() {
         switch(this.state.page) {
-            case 2:
+            case 11:
                 return (
                     <div className="list-view">
                         <Notification clearEffect={this.chkClear.bind(this)} prefs={this.state.notificationPrefs} handler={this.handler.bind(this)} chkHandler={this.chkHandler.bind(this)}/>

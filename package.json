@@ -19,6 +19,7 @@
   },
   "homepage": "https://github.com/g0tt/d_pro#readme",
   "dependencies": {
+    "axios": "^0.18.0",
     "cookie-parser": "^1.4.3",
     "express": "^4.16.4",
     "express-session": "^1.15.6",
