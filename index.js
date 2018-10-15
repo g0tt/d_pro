@@ -13,6 +13,7 @@ app.use(session({
         maxAge: 30 * 60 * 1000
     }
 }));
+app.use(express.static('dist'));
 app.post("/api/timer", (req, res) => {
     req.session.name = "aaa";
     var result = {id: req.session.id, data: req.body.data};
