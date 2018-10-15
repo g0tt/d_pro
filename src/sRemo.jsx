@@ -17,7 +17,7 @@ const items = [
     },
     {
         "key": 2,
-        "name": "def",
+        "name": "[通知制御]\t通知制御設定",
         "children": [],
     }
 ];
