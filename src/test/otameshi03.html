@@ -64,18 +64,54 @@
                     </div>
                     <div class="checkbox04 box">
                         <label>
-                            <input class="checkbox04-input" name="checkbox04[]" type="checkbox" />
+                            <input class="checkbox04-input" name="checkbox04[]" type="checkbox" onclick="Answer(0)" />
                             <span class="checkbox04-parts">メニューを表示する機能</span>
                         </label><br /><br />
                         <label>
-                            <input class="checkbox04-input" name="checkbox04[]" type="checkbox" />
+                            <input class="checkbox04-input" name="checkbox04[]" type="checkbox" onclick="Answer(1)" />
                             <span class="checkbox04-parts">ソフトを閉じる機能</span>
                         </label><br /><br />
                         <label>
-                            <input class="checkbox04-input" name="checkbox04[]" type="checkbox" />
+                            <input class="checkbox04-input" name="checkbox04[]" type="checkbox" onclick="Answer(2)" />
                             <span class="checkbox04-parts">ソフト周囲の明るさを調節する機能</span>
                         </label>
                     </div>
+
+                    <div class="sqbut" style="position:relative;top:650px"><a href="#" onclick="CheckAnswer([0, 1, 2], 2);"><label>確認</label></a></div>
+                </div>
+                <p class="checkboxspace"></p>
+            </div>
+
+            <div class="sqbut">
+                <a href="#" onclick="StartButton();"><label for="chebut4">ミッションを表示する</label></a>
+                <input type="checkbox" id="chebut4" />
+                <div class="hidden">
+                    <br>
+                    次のソフトについている機能をチェックしてください。<br>
+                    <div class="deslig">
+
+                        <div id="close4_3"><img src="./images/closebutton4.png" width="100" ; height="100"></div>
+                        <div id="nohamburger"><img src="./images/nohamburger.png" width="100" ; height="100"></div>
+                        <div id="slider_4"><img src="./images/slider.png" width="200" ; height="400" draggable="false"></div>
+                        <div class="scrollbar">
+                            <div id="tsumami_4" style="color:red;"><img src="./images/tsumami.png" width="25" height="25"></div>
+                        </div>
+                    </div>
+                    <div class="checkbox04 box">
+                        <label>
+                            <input class="checkbox04-input" name="checkbox04[]" type="checkbox" onclick="Answer(3)" />
+                            <span class="checkbox04-parts">メニューを表示する機能</span>
+                        </label><br /><br />
+                        <label>
+                            <input class="checkbox04-input" name="checkbox04[]" type="checkbox" onclick="Answer(4)" />
+                            <span class="checkbox04-parts">ソフトを閉じる機能</span>
+                        </label><br /><br />
+                        <label>
+                            <input class="checkbox04-input" name="checkbox04[]" type="checkbox" onclick="Answer(5)" />
+                            <span class="checkbox04-parts">ソフト周囲の明るさを調節する機能</span>
+                        </label>
+                    </div>
+                    <div class="sqbut" style="position:relative;top:650px"><a href="#" onclick="CheckAnswer([3, 4, 5], 3);"><label>確認</label></a></div>
 
                 </div>
             </div>

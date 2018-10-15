@@ -37,6 +37,49 @@ function CloseButton4() {
     target.style.visibility = "visible";
 }   
 
+var savedhtml;
+
+function CloseNormal() {
+    var target = document.getElementsByClassName("hidden")[2];
+    savedhtml = target.innerHTML;
+
+    var closehtml1 = '<div class="deslig"><div class=\"box10\" style=\"';
+    var closecss = 'width: 300px; padding: 0.5em 1em; margin: 2em 0; color: #FF69B4; background: #fff5ee; border-top: solid 6px #ff1493; box-shadow: 0 3px 4px rgba(0, 0, 0, 0.32);'
+    var closehtml2 = '\"><p style=\"margin: 0;padding: 0;\">' + "ソフトが閉じられました。<br>下のアイコンから再度開いてください。" + "</p></div>";
+    var closehtml3 = "<img src=\"./images/icon.png\" width=100px height=100px id=\"icon\" onclick=\"ReturnSavedHTML()\" onmouseover=\"this.style.opacity=0.5\" onmouseout=\"this.style.opacity=1\"></div > ";
+    target.innerHTML = closehtml1 + closecss + closehtml2 + closehtml3;
+}
+
+function ReturnSavedHTML() {
+    var target = document.getElementsByClassName("hidden")[2];
+    target.innerHTML = savedhtml;
+
+    ApplyClickEvent("close4_2", CloseNormal);
+    SetNormalSlider("tsumami_3", 2);
+    SetTsumamiStyle("tsumami_3", buttonimgsize, buttonsizesm);
+}
+
+function CloseNormal2() {
+    var target = document.getElementsByClassName("hidden")[3];
+    savedhtml = target.innerHTML;
+
+    var closehtml1 = '<div class="deslig"><div class=\"box10\" style=\"';
+    var closecss = 'width: 300px; padding: 0.5em 1em; margin: 2em 0; color: #FF69B4; background: #fff5ee; border-top: solid 6px #ff1493; box-shadow: 0 3px 4px rgba(0, 0, 0, 0.32);'
+    var closehtml2 = '\"><p style=\"margin: 0;padding: 0;\">' + "ソフトが閉じられました。<br>下のアイコンから再度開いてください。" + "</p></div>";
+    var closehtml3 = "<img src=\"./images/icon.png\" width=100px height=100px id=\"icon\" onclick=\"ReturnSavedHTML2()\" onmouseover=\"this.style.opacity=0.5\" onmouseout=\"this.style.opacity=1\"></div > ";
+    target.innerHTML = closehtml1 + closecss + closehtml2 + closehtml3;
+}
+
+function ReturnSavedHTML2() {
+    var target = document.getElementsByClassName("hidden")[3];
+    target.innerHTML = savedhtml;
+
+    ApplyClickEvent("close4_3", CloseNormal2);
+    SetNormalSlider("tsumami_4", 3);
+    SetTsumamiStyle("tsumami_4", buttonimgsize, buttonsizesm);
+}
+
+
 function ClearMission(target, cleartime) {
     var clearhtml1 = '<div class="deslig"><div class=\"box10\" style=\"';
     var clearcss = 'width: 150px; padding: 0.5em 1em; margin: 2em 0; color: #00BCD4; background: #e4fcff; border-top: solid 6px #1dc1d6; box-shadow: 0 3px 4px rgba(0, 0, 0, 0.32);'
@@ -129,6 +172,11 @@ function ApplyStyle(id, stylestr) {
     target.style = stylestr;
 }
 
+function ApplyCStyle(classname, index, stylestr) {
+    var target = document.getElementsByClassName(classname)[index];
+    target.style = stylestr;
+}
+
 function ApplyShadowToImage(id, zind) {
     var target = document.getElementById(id).getElementsByTagName("img");
     var imgnum = target.length;
@@ -203,16 +251,25 @@ document.addEventListener('DOMContentLoaded', function () {
     ApplyShadowAndStyle("hamburger1_3", hamburgersty, -1);
     ApplyShadowAndStyle("slider_3", slidersty, -1);
     ApplyShadowAndStyle("tsumami_3", tsumamisty, 0);
+
+    ApplyShadowAndStyle("close4_3", close4sty, -1);
+    ApplyShadowAndStyle("nohamburger", hamburgersty, -1);
+    ApplyShadowAndStyle("slider_4", slidersty, -1);
+    ApplyShadowAndStyle("tsumami_4", tsumamisty, 0);
+    
+
     
     ApplyClickEvent("close1", CloseButton);
     ApplyClickEvent("close2", CloseButton);
     ApplyClickEvent("close4", CloseButton4);
-
+    ApplyClickEvent("close4_2", CloseNormal);
+    ApplyClickEvent("close4_3", CloseNormal2);
 
 
     SetNormalSlider("tsumami", 0);
     SetNormalSlider("tsumami_2", 1);
     SetNormalSlider("tsumami_3", 2);
+    SetNormalSlider("tsumami_4", 3);
 
 
     /* つまみサイズと初期位置、当たり判定の調節*/
@@ -221,11 +278,74 @@ document.addEventListener('DOMContentLoaded', function () {
     SetTsumamiStyle("tsumami", buttonimgsize, buttonsizesm);
     SetTsumamiStyle("tsumami_2", buttonimgsize, buttonsizesm);
     SetTsumamiStyle("tsumami_3", buttonimgsize, buttonsizesm);
+    SetTsumamiStyle("tsumami_4", buttonimgsize, buttonsizesm);
 
+    InitializeAnswer(6);
 }, false);
 
 
 function WriteOutput(str) {
     var target = document.getElementById("output");
     target.innerHTML = str;
+}
+
+var answered;
+var corrected;
+var correctindex;
+
+function InitializeAnswer(questnum) {
+    answered = new Array(questnum);
+    corrected = new Array(questnum);
+    for (var i = 0; i < questnum; i++) {
+        answered[i] = false;
+        corrected[i] = false;
+    }
+    correctindex = [false, true, true, false, true, true];
+}
+
+function Answer(index) {
+    answered[index] = !answered[index];
+}
+
+
+function CheckAnswer(questindex, placeindex) {
+    var questnum = questindex.length;
+    var correct = true;
+    for (var i = 0; i < questnum; i++) {
+        var queind = questindex[i];
+        if (!answered[queind] ^ correctindex[queind]) {
+            corrected[questindex[i]] = true;
+        }
+        else {
+            corrected[questindex[i]] = false;
+        }
+        correct = correct && corrected[questindex[i]];
+    }
+    alert(correct);
+    Answered(placeindex);
+}
+
+function Answered(index) {
+    endtime = Date.now();
+    workmsec = endtime - starttime;
+    var target = document.getElementsByClassName("hidden")[index];
+    var target2 = document.getElementById("chebut");
+    ClearMission(target, workmsec);
+    target2.checked = false;
+    target.style.opacity = "1";
+    target.style.visibility = "visible";
+    var target3 = document.getElementsByClassName("sqbut")[index];
+    target3.style.height = "160px";
+}   
+
+function Include(val, arr) {
+    var arrlen = arr.length;
+    var include = false;
+    for (var i = 0; i < arrlen; i++) {
+        if (arr[i] == val) {
+            include = true;
+            break;
+        }
+    }
+    return include;
 }
