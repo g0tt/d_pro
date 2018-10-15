@@ -48,6 +48,13 @@ export default class ListView extends React.Component {
                 },
             ],
         }
+
+        this.start = null;
+    }
+
+    componentDidMount(){
+        alert("始めます");
+        this.start = Date.now();
     }
 
     goBack() {
@@ -82,7 +89,9 @@ export default class ListView extends React.Component {
     }
 
     clear() {
-        alert("Congrats!");
+        var end = Date.now();
+        var workmsec = end - this.start;
+        alert("Congrats! Time: " + workmsec);
     }
 
     render() {
@@ -121,7 +130,7 @@ class ListItem extends React.Component {
     render() {
         return(
             <a href="#" onClick={this.click.bind(this)} className="list-item">
-                <div style={{backgroundColor: "gray", height:"40px", border:"1px solid"}}>{this.props.item.name}</div>
+                <div style={{backgroundColor: "gray", border:"1px solid", borderColor: "#222", padding: "10px", paddingLeft: "15px"}}>{this.props.item.name}</div>
             </a>
         )
     }

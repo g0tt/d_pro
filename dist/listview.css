@@ -16,6 +16,12 @@
     padding: 10px;
 }
 
+a.list-item {
+    color: aqua;
+    display:block;
+    text-decoration: none;
+}
+
 a.back {
     color: cornflowerblue;
 }
