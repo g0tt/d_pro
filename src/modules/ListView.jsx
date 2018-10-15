@@ -99,7 +99,7 @@ export default class ListView extends React.Component {
             }
         };
 
-        axios.post('http://localhost:3000/api/timer', data).then(response => {
+        axios.post('/api/timer', data).then(response => {
             console.log('body:', response.data);
         });
         alert("Congrats! Time: " + workmsec + "ms");
