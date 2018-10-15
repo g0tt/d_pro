@@ -6,11 +6,19 @@ import ListView from "./modules/ListView.jsx";
 const items = [
     {
         "key": 1,
-        "name": "abc"
+        "name": "abc",
+        "children": [
+            {
+                "key": 3,
+                "name": "ghi",
+                "children": [],
+            }
+        ]
     },
     {
         "key": 2,
-        "name": "def"
+        "name": "def",
+        "children": [],
     }
 ];
 
