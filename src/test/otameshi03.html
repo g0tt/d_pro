@@ -1,0 +1,148 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="content-type" charset="utf-8">
+    <title> otameshi </title>
+    <script src="./otameshi03.js"></script>
+    <script type="text/javascript" src="xmlhttp.js" ></script>
+    <link rel="stylesheet" type="text/css" href="./otameshi03.css" />
+</head>
+<body>
+    <center>
+        <div id="main">
+            <div class="sqbut">
+                <a href="#" onclick="StartButton();"><label for="chebut">ミッションを表示する</label></a>
+                <input type="checkbox" id="chebut" />
+                <div class="hidden">
+                    <br>
+                    次のソフトの画面を閉じて下さい。<br>
+                    <div class="deslig">
+
+                        <div id="close1"><img src="./images/closebutton1.png" width="100" ; height="75"></div>
+                        <div id="close2"><img src="./images/closebutton2.png" width="100" ; height="25"></div>
+                        <div id="hamburger1"><img src="./images/hamburger.png" width="100" ; height="100"></div>
+                        <div id="slider"><img src="./images/slider.png" width="200" ; height="400" draggable="false"></div>
+                        <div class="scrollbar">
+                            <div id="tsumami" style="color:red;"><img src="./images/tsumami.png" width="25" height="25"></div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+
+            <div class="sqbut">
+                <a href="#" onclick="StartButton();"><label for="chebut2">ミッションを表示する</label></a>
+                <input type="checkbox" id="chebut2" />
+                <div class="hidden">
+                    <br>
+                    次のソフトの画面を閉じて下さい。<br>
+                    <div class="deslig">
+
+                        <div id="close4"><img src="./images/closebutton4.png" width="100" ; height="100"></div>
+                        <div id="hamburger1_2"><img src="./images/hamburger.png" width="100" ; height="100"></div>
+                        <div id="slider_2"><img src="./images/slider.png" width="200" ; height="400" draggable="false"></div>
+                        <div class="scrollbar">
+                            <div id="tsumami_2" style="color:red;"><img src="./images/tsumami.png" width="25" height="25"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="sqbut">
+                <a href="#" onclick="StartButton();"><label for="chebut3">ミッションを表示する</label></a>
+                <input type="checkbox" id="chebut3" />
+                <div class="hidden">
+                    <br>
+                    次のソフトについている機能をチェックしてください。<br>
+                    <div class="deslig">
+
+                        <div id="close4_2"><img src="./images/closebutton4.png" width="100" ; height="100"></div>
+                        <div id="hamburger1_3"><img src="./images/hamburger.png" width="100" ; height="100"></div>
+                        <div id="slider_3"><img src="./images/slider.png" width="200" ; height="400" draggable="false"></div>
+                        <div class="scrollbar">
+                            <div id="tsumami_3" style="color:red;"><img src="./images/tsumami.png" width="25" height="25"></div>
+                        </div>
+                    </div>
+                    <div class="checkbox04 box">
+                        <label>
+                            <input class="checkbox04-input" name="checkbox04[]" type="checkbox" onclick="Answer(0)" />
+                            <span class="checkbox04-parts">メニューを表示する機能</span>
+                        </label><br /><br />
+                        <label>
+                            <input class="checkbox04-input" name="checkbox04[]" type="checkbox" onclick="Answer(1)" />
+                            <span class="checkbox04-parts">ソフトを閉じる機能</span>
+                        </label><br /><br />
+                        <label>
+                            <input class="checkbox04-input" name="checkbox04[]" type="checkbox" onclick="Answer(2)" />
+                            <span class="checkbox04-parts">ソフト周囲の明るさを調節する機能</span>
+                        </label>
+                    </div>
+
+                    <div class="sqbut" style="position:relative;top:650px"><a href="#" onclick="CheckAnswer([0, 1, 2], 2);"><label>確認</label></a></div>
+                </div>
+                <p class="checkboxspace"></p>
+            </div>
+
+            <div class="sqbut">
+                <a href="#" onclick="StartButton();"><label for="chebut4">ミッションを表示する</label></a>
+                <input type="checkbox" id="chebut4" />
+                <div class="hidden">
+                    <br>
+                    次のソフトについている機能をチェックしてください。<br>
+                    <div class="deslig">
+
+                        <div id="close4_3"><img src="./images/closebutton4.png" width="100" ; height="100"></div>
+                        <div id="nohamburger"><img src="./images/nohamburger.png" width="100" ; height="100"></div>
+                        <div id="slider_4"><img src="./images/slider.png" width="200" ; height="400" draggable="false"></div>
+                        <div class="scrollbar">
+                            <div id="tsumami_4" style="color:red;"><img src="./images/tsumami.png" width="25" height="25"></div>
+                        </div>
+                    </div>
+                    <div class="checkbox04 box">
+                        <label>
+                            <input class="checkbox04-input" name="checkbox04[]" type="checkbox" onclick="Answer(3)" />
+                            <span class="checkbox04-parts">メニューを表示する機能</span>
+                        </label><br /><br />
+                        <label>
+                            <input class="checkbox04-input" name="checkbox04[]" type="checkbox" onclick="Answer(4)" />
+                            <span class="checkbox04-parts">ソフトを閉じる機能</span>
+                        </label><br /><br />
+                        <label>
+                            <input class="checkbox04-input" name="checkbox04[]" type="checkbox" onclick="Answer(5)" />
+                            <span class="checkbox04-parts">ソフト周囲の明るさを調節する機能</span>
+                        </label>
+                    </div>
+                    <div class="sqbut" style="position:relative;top:650px"><a href="#" onclick="CheckAnswer([3, 4, 5], 3);"><label>確認</label></a></div>
+                </div>
+                <p class="checkboxspace"></p>
+
+            </div>
+
+            <div class="sqbut">
+                <a href="#" onclick="StartButton();"><label for="chebut5">ミッションを表示する</label></a>
+                <input type="checkbox" id="chebut5" />
+                <div class="hidden">
+                    <br>
+                    次のソフトのスライダーを下げ、ソフトの周囲の明るさを一定以下にしてください。<br>
+                    <div class="deslig">
+
+                        <div id="close4_4"><img src="./images/closebutton4.png" width="100" ; height="100"></div>
+                        <div id="nohamburger_2"><img src="./images/nohamburger.png" width="100" ; height="100"></div>
+                        <div id="slider_5"><img src="./images/slider.png" width="200" ; height="400" draggable="false"></div>
+                        <div class="scrollbar">
+                            <div id="tsumami_5"><img src="./images/tsumami.png" width="25" height="25"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div id="output" style="z-index:4;"></div>
+        </div>
+        <h1>サーバーにデータを保存する</h1>
+        <form method="get" name="ajaxForm" onsubmit="dataSave();return false;">
+            <input type="text" name="request" value="テストです"> <input type="submit" value="データを送信"><br>
+        </form>
+        <div id="result"></div>
+    </center>
+</body>
+</html>
