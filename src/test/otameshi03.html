@@ -4,12 +4,25 @@
     <meta http-equiv="content-type" charset="utf-8">
     <title> otameshi </title>
     <script src="./otameshi03.js"></script>
-    <script type="text/javascript" src="xmlhttp.js" ></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
     <link rel="stylesheet" type="text/css" href="./otameshi03.css" />
 </head>
 <body>
     <center>
         <div id="main">
+            <div class="sqbut0">
+                <a href="#" onclick="StartButton();"><label for="chebut0">ミッションを表示する</label></a>
+                <input type="checkbox" id="chebut0" />
+                <div class="hidden0">
+                    <br><div id="messagetext">
+                        左のテキストボックスの内容を右に移して下さい。<br>
+                    </div>
+                    <textarea readonly rows="15" cols="30" style="position:absolute;top:120px;right:calc(50% + 25px)">食べられません　食べられません　食べられません　食べられません　食べられません　食べられません　食べられません　食べられません　食べられません　食べられません　食べられません　食べられません　食べられません　食べられません　食べられません　</textarea><br />
+                    <textarea rows="15" cols="30" style="position:absolute;top:120px;left:calc(50% + 25px)"></textarea>
+
+                    <div class="sqbut0" style="position:relative;top:220px"><a href="#" onclick="CheckAnswer0();"><label>確認</label></a></div>
+                </div>
+            </div>
             <div class="sqbut">
                 <a href="#" onclick="StartButton();"><label for="chebut">ミッションを表示する</label></a>
                 <input type="checkbox" id="chebut" />
@@ -135,14 +148,9 @@
                     </div>
                 </div>
             </div>
-
             <div id="output" style="z-index:4;"></div>
         </div>
-        <h1>サーバーにデータを保存する</h1>
-        <form method="get" name="ajaxForm" onsubmit="dataSave();return false;">
-            <input type="text" name="request" value="テストです"> <input type="submit" value="データを送信"><br>
-        </form>
-        <div id="result"></div>
+ 
     </center>
 </body>
 </html>
