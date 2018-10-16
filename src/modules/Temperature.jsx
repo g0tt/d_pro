@@ -20,16 +20,16 @@ export default class Temperature extends React.Component {
     }
 
     onPanEnd(e) {
-        console.log(this.checkSwipe(e.deltaY));
+        console.log(this.checkSwipe(e.deltaX, e.deltaY));
     }
 
-    checkSwipe(deltaY) {
-        if (deltaY > 0) {
+    checkSwipe(deltaX, deltaY) {
+        if (deltaY > 0 && Math.abs(deltaX) < 50) {
             this.setState({
                 temp: this.state.temp - 1
             });
             return "down"
-        } else {
+        } else if (deltaY < 0 && Math.abs(deltaX) < 50) {
             this.setState({
                 temp: this.state.temp + 1
             });
@@ -69,21 +69,24 @@ export default class Temperature extends React.Component {
             touchAction:'compute',
             recognizers: {
                 pan: {
-                    threshold: 5
+                    threshold: 40
                 }
             }
         };
         return (
             <div>
+                <div className="circle" style={{left: "12px", top: "12px", height: "200px", width: "200px", borderRadius: "100px", border: "solid 3px green", position: "absolute"}}>
+                </div>
                 <Hammer onPanStart={this.onPanStart.bind(this)}
                         onPan={this.onPan.bind(this)}
                         onPanEnd={this.onPanEnd.bind(this)}
-                        options={options}>
-                <div className="circle" style={{height: "200px", width: "200px", borderRadius: "100px", border: "solid 3px green"}}>
-                    <div style={{fontSize: "3.5em", height:"200px", width: "200px", display: "table-cell", textAlign: "center", verticalAlign: "middle"}}>{this.state.temp}℃</div>
-                </div>
-            </Hammer>
-                <div style={{marginTop: "30px", marginLeft: "50px"}}>
+                        options={options}
+                        direction="DIRECTION_ALL">
+                    <div className="circle" style={{left: "0px", top: "0px", height: "230px", width: "230px", borderRadius: "115px", position: "absolute"}}>
+                    </div>
+                </Hammer>
+                <div className="noselect" style={{fontSize: "3.5em", height:"200px", width: "130px", top: "0px", paddingTop: "70px", left: "50px", position: "absolute", display: "table-cell", textAlign: "center", verticalAlign: "middle"}}>{this.state.temp}℃</div>
+                <div style={{marginTop: "240px", marginLeft: "50px"}}>
                     <button style={{width: "100px", height: "40px"}} onClick={this.chkClear.bind(this)}>送信</button>
                 </div>
             </div>
