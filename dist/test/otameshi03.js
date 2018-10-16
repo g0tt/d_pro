@@ -27,11 +27,26 @@ function ReturnData() {
 function dataSave() {
     var textData = document.ajaxForm.request.value;
     textData = textData.replace(/&/g, "＆");
+    /*
     httpObj = createXMLHttpRequest(displayData);
     if (httpObj) {
         httpObj.open("GET", "save.rb?request=" + encodeURI(textData), true);
         httpObj.send(null);
     }
+    */
+
+    $.ajax({
+        url: '/api/timer',
+        type:'POST',
+        dataType: 'json',
+        data : JSON.stringify({data : textData}),
+        contentType: 'application/json',
+        timeout:3000,
+    }).done(function(data) {
+        console.log("ok");
+    }).fail(function(XMLHttpRequest, textStatus, errorThrown) {
+        console.log("error");
+    })
 }
 
 function displayData() {
