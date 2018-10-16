@@ -85,7 +85,7 @@ function CloseNormal() {
     var closehtml1 = '<div class="deslig"><div class=\"box10\" style=\"';
     var closecss = 'width: 300px; padding: 0.5em 1em; margin: 2em 0; color: #FF69B4; background: #fff5ee; border-top: solid 6px #ff1493; box-shadow: 0 3px 4px rgba(0, 0, 0, 0.32);'
     var closehtml2 = '\"><p style=\"margin: 0;padding: 0;\">' + "ソフトが閉じられました。<br>下のアイコンから再度開いてください。" + "</p></div>";
-    var closehtml3 = "<img src=\"./images/icon.png\" width=100px height=100px onclick=\"ReturnSavedHTML()\" onmouseover=\"this.style.opacity=0.5\" onmouseout=\"this.style.opacity=1\"></div > ";
+    var closehtml3 = "<img src=\"images/icon.png\" width=100px height=100px onclick=\"ReturnSavedHTML()\" onmouseover=\"this.style.opacity=0.5\" onmouseout=\"this.style.opacity=1\"></div > ";
     target.innerHTML = closehtml1 + closecss + closehtml2 + closehtml3;
 }
 
@@ -105,7 +105,7 @@ function CloseNormal2() {
     var closehtml1 = '<div class="deslig"><div class=\"box10\" style=\"';
     var closecss = 'width: 300px; padding: 0.5em 1em; margin: 2em 0; color: #FF69B4; background: #fff5ee; border-top: solid 6px #ff1493; box-shadow: 0 3px 4px rgba(0, 0, 0, 0.32);'
     var closehtml2 = '\"><p style=\"margin: 0;padding: 0;\">' + "ソフトが閉じられました。<br>下のアイコンから再度開いてください。" + "</p></div>";
-    var closehtml3 = "<img src=\"./images/icon.png\" width=100px height=100px onclick=\"ReturnSavedHTML2()\" onmouseover=\"this.style.opacity=0.5\" onmouseout=\"this.style.opacity=1\"></div > ";
+    var closehtml3 = "<img src=\"images/icon.png\" width=100px height=100px onclick=\"ReturnSavedHTML2()\" onmouseover=\"this.style.opacity=0.5\" onmouseout=\"this.style.opacity=1\"></div > ";
     target.innerHTML = closehtml1 + closecss + closehtml2 + closehtml3;
 }
 
@@ -125,7 +125,7 @@ function CloseNormal3() {
     var closehtml1 = '<div class="deslig"><div class=\"box10\" style=\"';
     var closecss = 'width: 300px; padding: 0.5em 1em; margin: 2em 0; color: #FF69B4; background: #fff5ee; border-top: solid 6px #ff1493; box-shadow: 0 3px 4px rgba(0, 0, 0, 0.32);'
     var closehtml2 = '\"><p style=\"margin: 0;padding: 0;\">' + "ソフトが閉じられました。<br>下のアイコンから再度開いてください。" + "</p></div>";
-    var closehtml3 = "<img src=\"./images/icon.png\" width=100px height=100px onclick=\"ReturnSavedHTML3()\" onmouseover=\"this.style.opacity=0.5\" onmouseout=\"this.style.opacity=1\"></div > ";
+    var closehtml3 = "<img src=\"images/icon.png\" width=100px height=100px onclick=\"ReturnSavedHTML3()\" onmouseover=\"this.style.opacity=0.5\" onmouseout=\"this.style.opacity=1\"></div > ";
     target.innerHTML = closehtml1 + closecss + closehtml2 + closehtml3;
 }
 
