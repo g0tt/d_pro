@@ -14,29 +14,20 @@ var buttonimgsize2;/*20~70*/
 var buttonsizesm2;/*buttonimgsize2 + 50*/
 
 var datajson;
+var cleared;
 
 function ReturnData() {
     var data = {
-        shownquests: shownquests,/*示したミッション(onehot形式)*/
-        answertimes: answertimes, /*各問題の回答時間*/
-        answered: answered, /*3問目または4問目でチェックした場所*/
+        shownquests: JSON.stringify(shownquests),/*示したミッション(onehot形式)*/
+        answertimes: JSON.stringify(answertimes), /*各問題の回答時間*/
+        answered: JSON.stringify(answered), /*3問目または4問目でチェックした場所*/
         buttonimgsize: buttonimgsize2,/*5問目で出したボタンのサイズ*/
     }
     return data;
 }
 
 
-function dataSave() {
-    var textData = document.ajaxForm.request.value;
-    textData = textData.replace(/&/g, "＆");
-    /*
-    httpObj = createXMLHttpRequest(displayData);
-    if (httpObj) {
-        httpObj.open("GET", "save.rb?request=" + encodeURI(textData), true);
-        httpObj.send(null);
-    }
-    */
-
+function dataSave(textData) {
     $.ajax({
         url: '/api/timer',
         type:'POST',
@@ -45,10 +36,12 @@ function dataSave() {
         contentType: 'application/json',
         timeout:3000,
     }).done(function(data) {
-        console.log("ok");
+        alert("ok");
     }).fail(function(XMLHttpRequest, textStatus, errorThrown) {
-        console.log("error");
-    })
+        alert("error");
+        })
+
+    document.getElementsByClassName("deslig")[4].style.backgroundColor = "white";
 }
 
 function displayData() {
@@ -166,7 +159,7 @@ function StartButton(){
 
     /*最後の問題でつまみの操作による色変更とクリア表示が非同期的に行われるため、desligのクラス名を変えないとクリア表示後に色を変えられてしまう。*/
     function ClearMission2(target, cleartime) {
-        var clearhtml1 = '<div class="deslig2"><div class=\"box10\" style=\"';
+        var clearhtml1 = '<div class="deslig"><img><div class=\"box10\" style=\"';
         var clearcss = 'width: 150px; padding: 0.5em 1em; margin: 2em 0; color: #00BCD4; background: #e4fcff; border-top: solid 6px #1dc1d6; box-shadow: 0 3px 4px rgba(0, 0, 0, 0.32);'
         var clearhtml2 = '\"><p style=\"margin: 0;padding: 0;\">' + cleartime / 1000 + "秒でクリア" + "</p></div></div>";
         target.innerHTML = clearhtml1 + clearcss + clearhtml2;
@@ -184,13 +177,14 @@ function ClearMission3(target, cleartime) {
 function CheckAllCleared() {
     questnum = answertimes.length;
     var answerednum = 0;
-    for (var i = 0; i > questnum; i++) {
+    for (var i = 0; i < questnum; i++) {
         if (answertimes[i] != -1) {
             answerednum += 1;
         }
     }
     if (answerednum == 4) {
         datajson = ReturnData();
+        dataSave(datajson);
     }
 }
 
@@ -324,7 +318,12 @@ function CheckAllCleared() {
         var targetpc = targetsm.getElementsByTagName("img")[0];
         targetpc.ondragstart = CatchTsumamiSta;
         targetpc.ondrag = function (event) { CatchTsumami(event, changeind); };
-        targetpc.ondragend = function (event) { CatchTsumami(event, changeind); };
+        targetpc.ondragend = function (event) {
+            if (cleared) {
+                document.getElementsByClassName("deslig")[4].style.display = none;
+            }
+            CatchTsumami(event, changeind);
+        };
         targetsm.ontouchstart = function (event) { CatchTsumamiSS(event, id); };
         targetsm.ontouchmove = function (event) { CatchTsumamiS(event, changeind, id); };
         targetsm.ontouchend = CatchTsumamiSE;
@@ -346,6 +345,7 @@ function CheckAllCleared() {
                     target.style.visibility = "visible";
                     var target3 = document.getElementsByClassName("sqbut")[4];
                     target3.style.height = "160px";
+                    cleared = true;
                 }
             });
         });
@@ -466,7 +466,7 @@ function CheckAllCleared() {
             atostr += motostr;
         }
         targtext.innerHTML = atostr;
-
+        cleared = false;
     }, false);
 
 function CheckAnswer0() {
@@ -477,8 +477,8 @@ function CheckAnswer0() {
         workmsec = endtime - starttime;
         var target = document.getElementsByClassName("hidden0")[0];
         target.style.height = "100px";
+        answertimes[5] = workmsec;
         ClearMission3(target, workmsec);
-        answered[5] = workmsec;
     }
     else {
         var target = document.getElementById("messagetext");
