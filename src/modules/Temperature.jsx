@@ -43,7 +43,7 @@ export default class Temperature extends React.Component {
     }
 
     chkClear() {
-        if (this.state.temp === 30) {
+        if (this.state.temp === 28) {
             this.clear();
         }
     }
@@ -85,7 +85,7 @@ export default class Temperature extends React.Component {
                     <div className="circle" style={{left: "0px", top: "0px", height: "230px", width: "230px", borderRadius: "115px", position: "absolute"}}>
                     </div>
                 </Hammer>
-                <div className="noselect" style={{fontSize: "3.5em", height:"200px", width: "130px", top: "0px", paddingTop: "70px", left: "50px", position: "absolute", display: "table-cell", textAlign: "center", verticalAlign: "middle"}}>{this.state.temp}℃</div>
+                <div className="noselect" style={{fontSize: "3.5em", height:"150px", width: "130px", top: "0px", paddingTop: "70px", left: "50px", position: "absolute", display: "table-cell", textAlign: "center", verticalAlign: "middle"}}>{this.state.temp}℃</div>
                 <div style={{marginTop: "240px", marginLeft: "50px"}}>
                     <button style={{width: "100px", height: "40px"}} onClick={this.chkClear.bind(this)}>送信</button>
                 </div>
