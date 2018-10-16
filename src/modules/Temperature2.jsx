@@ -31,7 +31,7 @@ export default class Temperature2 extends React.Component {
     }
 
     chkClear() {
-        if (this.state.temp === 30) {
+        if (this.state.temp === 28) {
             this.clear();
         }
     }
@@ -41,7 +41,7 @@ export default class Temperature2 extends React.Component {
         var workmsec = end - this.start;
         var data = {
             data: {
-                problem: "sRemo_3",
+                problem: "sRemo_4",
                 time: workmsec
             }
         };
