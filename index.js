@@ -1,9 +1,9 @@
 
+const express = require("express");
+const app = express();
 var bodyParser = require('body-parser');
 var cookieParser = require('cookie-parser');
 var session = require('express-session');
-const express = require("express");
-const app = express();
 app.use(bodyParser.json());
 app.use(cookieParser());
 app.use(session({
