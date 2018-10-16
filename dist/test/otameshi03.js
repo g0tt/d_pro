@@ -25,9 +25,49 @@ function ReturnData() {
     return data;
 }
 
-    function StartButton() {
-        starttime = Date.now();
+
+function dataSave() {
+    var textData = document.ajaxForm.request.value;
+    textData = textData.replace(/&/g, "＆");
+    /*
+    httpObj = createXMLHttpRequest(displayData);
+    if (httpObj) {
+        httpObj.open("GET", "save.rb?request=" + encodeURI(textData), true);
+        httpObj.send(null);
     }
+    */
+
+    $.ajax({
+        url: '/api/timer',
+        type:'POST',
+        dataType: 'json',
+        data : JSON.stringify({data : textData}),
+        contentType: 'application/json',
+        timeout:3000,
+    }).done(function(data) {
+        console.log("ok");
+    }).fail(function(XMLHttpRequest, textStatus, errorThrown) {
+        console.log("error");
+    })
+}
+
+function displayData() {
+    if (httpObj != null) {
+
+        if ((httpObj.readyState == 4) && (httpObj.status == 200)) {
+            str = httpObj.responseText;
+            REbr = new RegExp(String.fromCharCode(10), "g");
+            str = str.replace(REbr, "<br>");
+            $("result").innerHTML = str;
+        } else {
+            $("result").innerHTML = "<b>Wait...</b>";
+        }
+    }
+}
+
+function StartButton(){
+	starttime = Date.now();
+}
 
     function CloseButton() {
         endtime = Date.now();
