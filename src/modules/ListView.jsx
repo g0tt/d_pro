@@ -8,6 +8,7 @@ export default class ListView extends React.Component {
         super(props);
         this.state = {
             items: this.props.items,
+            temprand: Math.random(),
             page: 0,
             availableCheck: false,
             old: {},
@@ -109,7 +110,7 @@ export default class ListView extends React.Component {
             case 11:
                 return (
                     <div className="list-view">
-                        <Notification clearEffect={this.chkClear.bind(this)} prefs={this.state.notificationPrefs} handler={this.handler.bind(this)} chkHandler={this.chkHandler.bind(this)} problem={this.props.problem}/>
+                        <Notification temprand={this.state.temprand} clearEffect={this.chkClear.bind(this)} prefs={this.state.notificationPrefs} handler={this.handler.bind(this)} chkHandler={this.chkHandler.bind(this)} problem={this.props.problem}/>
                         <div style={{position: "absolute", bottom: "15px", right:"20px", display: !_.isEmpty(this.state.old) ? "block" : "none"}}><a href="#" className="back" onClick={this.goBack.bind(this)}>戻る</a></div>
                     </div>
                 );

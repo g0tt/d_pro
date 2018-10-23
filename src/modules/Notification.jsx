@@ -15,7 +15,7 @@ export default class Notification extends React.Component {
     }
 
     render() {
-        if (Math.random() > 0.50) {
+        if (this.props.temprand > 0.50) {
             return (
                 <div>
                     <div className="title">通知制御設定</div>
