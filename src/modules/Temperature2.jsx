@@ -51,6 +51,7 @@ export default class Temperature2 extends React.Component {
             console.log('body:', response.data);
         });
         alert("クリア！");
+        window.close();
     }
 
     render() {

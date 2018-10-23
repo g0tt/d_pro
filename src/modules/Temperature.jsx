@@ -63,6 +63,7 @@ export default class Temperature extends React.Component {
             console.log('body:', response.data);
         });
         alert("クリア！");
+        window.close();
     }
 
     render() {
