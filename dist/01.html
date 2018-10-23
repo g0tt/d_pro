@@ -44,6 +44,7 @@
                 timeout:3000,
             }).done(function(data) {
                 alert("ok");
+                window.close();
             }).fail(function(XMLHttpRequest, textStatus, errorThrown) {
                 alert("error");
             })
