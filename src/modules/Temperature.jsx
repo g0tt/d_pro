@@ -38,7 +38,7 @@ export default class Temperature extends React.Component {
     }
 
     componentDidMount(){
-        alert("始めます");
+        console.info("始めます");
         this.start = Date.now();
     }
 
@@ -53,7 +53,8 @@ export default class Temperature extends React.Component {
         var workmsec = end - this.start;
         var data = {
             data: {
-                problem: "sRemo_3",
+                problem: this.props.problem + "_temp_swipe",
+                ua: window.navigator.userAgent,
                 time: workmsec
             }
         };
@@ -61,7 +62,7 @@ export default class Temperature extends React.Component {
         axios.post('/api/timer', data).then(response => {
             console.log('body:', response.data);
         });
-        alert("Congrats! Time: " + workmsec + "ms");
+        alert("クリア！");
     }
 
     render() {
@@ -86,8 +87,8 @@ export default class Temperature extends React.Component {
                     </div>
                 </Hammer>
                 <div className="noselect" style={{fontSize: "3.5em", height:"150px", width: "130px", top: "0px", paddingTop: "70px", left: "50px", position: "absolute", display: "table-cell", textAlign: "center", verticalAlign: "middle"}}>{this.state.temp}℃</div>
-                <div style={{marginTop: "240px", marginLeft: "50px"}}>
-                    <button style={{width: "100px", height: "40px"}} onClick={this.chkClear.bind(this)}>送信</button>
+                <div style={{marginTop: "240px", marginLeft: "60px"}}>
+                    <button style={{width: "100px", height: "40px"}} className="save" onClick={this.chkClear.bind(this)}>送信</button>
                 </div>
             </div>
         );

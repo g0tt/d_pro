@@ -26,7 +26,7 @@ export default class Temperature2 extends React.Component {
     }
 
     componentDidMount(){
-        alert("始めます");
+        console.info("始めます");
         this.start = Date.now();
     }
 
@@ -41,7 +41,8 @@ export default class Temperature2 extends React.Component {
         var workmsec = end - this.start;
         var data = {
             data: {
-                problem: "sRemo_4",
+                problem: this.props.problem + "_temp_button",
+                ua: window.navigator.userAgent,
                 time: workmsec
             }
         };
@@ -49,7 +50,7 @@ export default class Temperature2 extends React.Component {
         axios.post('/api/timer', data).then(response => {
             console.log('body:', response.data);
         });
-        alert("Congrats! Time: " + workmsec + "ms");
+        alert("クリア！");
     }
 
     render() {
@@ -61,7 +62,7 @@ export default class Temperature2 extends React.Component {
                     <a href="#" onClick={this.down.bind(this)} style={{color: "#555", fontSize: "3.5em", textDecoration: "none", display: "block", position: "absolute", width:"200px", textAlign: "center", top:"120px"}}>&#9661;</a>
                 </div>
                 <div style={{marginTop: "30px", marginLeft: "50px"}}>
-                    <button style={{width: "100px", height: "40px"}} onClick={this.chkClear.bind(this)}>送信</button>
+                    <button style={{width: "100px", height: "40px"}} className="save" onClick={this.chkClear.bind(this)}>送信</button>
                 </div>
             </div>
         );

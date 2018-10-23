@@ -51,6 +51,7 @@ export default class ListView extends React.Component {
         }
 
         this.start = null;
+        this.end = null;
     }
 
     componentDidMount(){
@@ -82,16 +83,14 @@ export default class ListView extends React.Component {
 
     chkClear() {
         _.forEach(this.state.notificationPrefs, (row) => {
-            if (row.type == 0 && row.temperature == 15 && row.method == 1 && row.availableCheck) {
-                this.clear();
-                return false;
-            }
+            this.clear();
         })
     }
 
     clear() {
-        var end = Date.now();
-        var workmsec = end - this.start;
+        if (this.end != null) return false;
+        this.end = Date.now();
+        var workmsec = this.end - this.start;
         var data = {
             data: {
                 problem: this.props.problem,
@@ -102,7 +101,7 @@ export default class ListView extends React.Component {
         axios.post('/api/timer', data).then(response => {
             console.log('body:', response.data);
         });
-        alert("Congrats! Time: " + workmsec + "ms");
+        //alert("Congrats! Time: " + workmsec + "ms");
     }
 
     render() {
@@ -110,7 +109,7 @@ export default class ListView extends React.Component {
             case 11:
                 return (
                     <div className="list-view">
-                        <Notification clearEffect={this.chkClear.bind(this)} prefs={this.state.notificationPrefs} handler={this.handler.bind(this)} chkHandler={this.chkHandler.bind(this)}/>
+                        <Notification clearEffect={this.chkClear.bind(this)} prefs={this.state.notificationPrefs} handler={this.handler.bind(this)} chkHandler={this.chkHandler.bind(this)} problem={this.props.problem}/>
                         <div style={{position: "absolute", bottom: "15px", right:"20px", display: !_.isEmpty(this.state.old) ? "block" : "none"}}><a href="#" className="back" onClick={this.goBack.bind(this)}>戻る</a></div>
                     </div>
                 );
