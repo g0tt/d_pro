@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <meta name="viewport" content="width=420,initial-scale=1.0">
+    <title>01</title>
+    <style>
+        input {
+            width: 30px;
+            height:30px;
+        }
+    </style>
+</head>
+<body>
+<center>
+    <label for="chk1" style="position:absolute;top:50px;left:calc(50% - 50px);"><input type="checkbox" id="chk1" /></label>
+    <label for="chk2" style="position:absolute;top:50px;right:calc(50% - 50px);"><input type="checkbox" id="chk2" /></label>
+    <label for="chk3" style="position:absolute;top:100px;right:calc(50% - 50px);"><input type="checkbox" id="chk3" /></label>
+    <label for="chk4" style="position:absolute;top:100px;left:calc(50% - 50px);"><input type="checkbox" id="chk4" /></label>
+</center>
+<script>
+    var start = null;
+
+    $(function () {
+        $('input[type=checkbox]').on('change', function(e) {
+            update(e);
+        })
+    })
+
+    var update = function(e) {
+        if ($('#chk1').prop('checked') && $('#chk2').prop('checked') && $('#chk3').prop('checked') && $('#chk4').prop('checked')) {
+            var end = Date.now();
+            $.ajax({
+                url: '/api/timer',
+                type:'POST',
+                dataType: 'json',
+                data : JSON.stringify({data : {
+                        problem: "sremo_test",
+                        time: end - start
+                    }
+                }),
+                contentType: 'application/json',
+                timeout:3000,
+            }).done(function(data) {
+                alert("ok");
+            }).fail(function(XMLHttpRequest, textStatus, errorThrown) {
+                alert("error");
+            })
+        }
+    }
+
+    window.onload = function() {
+        start = Date.now();
+    }
+</script>
+</body>
+</html>
