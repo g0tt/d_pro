@@ -3,14 +3,26 @@
 <head>
     <meta http-equiv="content-type" charset="utf-8">
     <title> otameshi </title>
+    <script src="./otameshi03.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-    <script src="otameshi03.js"></script>
-    <script type="text/javascript" src="xmlhttp.js" ></script>
-    <link rel="stylesheet" type="text/css" href="otameshi03.css" />
+    <link rel="stylesheet" type="text/css" href="./otameshi03.css" />
 </head>
 <body>
     <center>
         <div id="main">
+            <div class="sqbut0">
+                <a href="#" onclick="StartButton();"><label for="chebut0">ミッションを表示する</label></a>
+                <input type="checkbox" id="chebut0" />
+                <div class="hidden0">
+                    <br><div id="messagetext">
+                        左のテキストボックスの内容を右に移して下さい。<br>
+                    </div>
+                    <textarea readonly rows="15" cols="30" style="position:absolute;top:120px;right:calc(50% + 25px)">食べられません　食べられません　食べられません　食べられません　食べられません　食べられません　食べられません　食べられません　食べられません　食べられません　食べられません　食べられません　食べられません　食べられません　食べられません　</textarea><br />
+                    <textarea rows="15" cols="30" style="position:absolute;top:120px;left:calc(50% + 25px)"></textarea>
+
+                    <div class="sqbut0" style="position:relative;top:220px"><a href="#" onclick="CheckAnswer0();"><label>確認</label></a></div>
+                </div>
+            </div>
             <div class="sqbut">
                 <a href="#" onclick="StartButton();"><label for="chebut">ミッションを表示する</label></a>
                 <input type="checkbox" id="chebut" />
@@ -19,12 +31,12 @@
                     次のソフトの画面を閉じて下さい。<br>
                     <div class="deslig">
 
-                        <div id="close1"><img src="images/closebutton1.png" width="100" ; height="75"></div>
-                        <div id="close2"><img src="images/closebutton2.png" width="100" ; height="25"></div>
-                        <div id="hamburger1"><img src="images/hamburger.png" width="100" ; height="100"></div>
-                        <div id="slider"><img src="images/slider.png" width="200" ; height="400" draggable="false"></div>
+                        <div id="close1"><img src="./images/closebutton1.png" width="100" ; height="75"></div>
+                        <div id="close2"><img src="./images/closebutton2.png" width="100" ; height="25"></div>
+                        <div id="hamburger1"><img src="./images/hamburger.png" width="100" ; height="100"></div>
+                        <div id="slider"><img src="./images/slider.png" width="200" ; height="400" draggable="false"></div>
                         <div class="scrollbar">
-                            <div id="tsumami" style="color:red;"><img src="images/tsumami.png" width="25" height="25"></div>
+                            <div id="tsumami" style="color:red;"><img src="./images/tsumami.png" width="25" height="25"></div>
                         </div>
                     </div>
 
@@ -39,11 +51,11 @@
                     次のソフトの画面を閉じて下さい。<br>
                     <div class="deslig">
 
-                        <div id="close4"><img src="images/closebutton4.png" width="100" ; height="100"></div>
-                        <div id="hamburger1_2"><img src="images/hamburger.png" width="100" ; height="100"></div>
-                        <div id="slider_2"><img src="images/slider.png" width="200" ; height="400" draggable="false"></div>
+                        <div id="close4"><img src="./images/closebutton4.png" width="100" ; height="100"></div>
+                        <div id="hamburger1_2"><img src="./images/hamburger.png" width="100" ; height="100"></div>
+                        <div id="slider_2"><img src="./images/slider.png" width="200" ; height="400" draggable="false"></div>
                         <div class="scrollbar">
-                            <div id="tsumami_2" style="color:red;"><img src="images/tsumami.png" width="25" height="25"></div>
+                            <div id="tsumami_2" style="color:red;"><img src="./images/tsumami.png" width="25" height="25"></div>
                         </div>
                     </div>
                 </div>
@@ -57,11 +69,11 @@
                     次のソフトについている機能をチェックしてください。<br>
                     <div class="deslig">
 
-                        <div id="close4_2"><img src="images/closebutton4.png" width="100" ; height="100"></div>
-                        <div id="hamburger1_3"><img src="images/hamburger.png" width="100" ; height="100"></div>
-                        <div id="slider_3"><img src="images/slider.png" width="200" ; height="400" draggable="false"></div>
+                        <div id="close4_2"><img src="./images/closebutton4.png" width="100" ; height="100"></div>
+                        <div id="hamburger1_3"><img src="./images/hamburger.png" width="100" ; height="100"></div>
+                        <div id="slider_3"><img src="./images/slider.png" width="200" ; height="400" draggable="false"></div>
                         <div class="scrollbar">
-                            <div id="tsumami_3" style="color:red;"><img src="images/tsumami.png" width="25" height="25"></div>
+                            <div id="tsumami_3" style="color:red;"><img src="./images/tsumami.png" width="25" height="25"></div>
                         </div>
                     </div>
                     <div class="checkbox04 box">
@@ -92,11 +104,11 @@
                     次のソフトについている機能をチェックしてください。<br>
                     <div class="deslig">
 
-                        <div id="close4_3"><img src="images/closebutton4.png" width="100" ; height="100"></div>
-                        <div id="nohamburger"><img src="images/nohamburger.png" width="100" ; height="100"></div>
-                        <div id="slider_4"><img src="images/slider.png" width="200" ; height="400" draggable="false"></div>
+                        <div id="close4_3"><img src="./images/closebutton4.png" width="100" ; height="100"></div>
+                        <div id="nohamburger"><img src="./images/nohamburger.png" width="100" ; height="100"></div>
+                        <div id="slider_4"><img src="./images/slider.png" width="200" ; height="400" draggable="false"></div>
                         <div class="scrollbar">
-                            <div id="tsumami_4" style="color:red;"><img src="images/tsumami.png" width="25" height="25"></div>
+                            <div id="tsumami_4" style="color:red;"><img src="./images/tsumami.png" width="25" height="25"></div>
                         </div>
                     </div>
                     <div class="checkbox04 box">
@@ -127,23 +139,18 @@
                     次のソフトのスライダーを下げ、ソフトの周囲の明るさを一定以下にしてください。<br>
                     <div class="deslig">
 
-                        <div id="close4_4"><img src="images/closebutton4.png" width="100" ; height="100"></div>
-                        <div id="nohamburger_2"><img src="images/nohamburger.png" width="100" ; height="100"></div>
-                        <div id="slider_5"><img src="images/slider.png" width="200" ; height="400" draggable="false"></div>
+                        <div id="close4_4"><img src="./images/closebutton4.png" width="100" ; height="100"></div>
+                        <div id="nohamburger_2"><img src="./images/nohamburger.png" width="100" ; height="100"></div>
+                        <div id="slider_5"><img src="./images/slider.png" width="200" ; height="400" draggable="false"></div>
                         <div class="scrollbar">
-                            <div id="tsumami_5"><img src="images/tsumami.png" width="25" height="25"></div>
+                            <div id="tsumami_5"><img src="./images/tsumami.png" width="25" height="25"></div>
                         </div>
                     </div>
                 </div>
             </div>
-
             <div id="output" style="z-index:4;"></div>
         </div>
-        <h1>サーバーにデータを保存する</h1>
-        <form method="get" name="ajaxForm" onsubmit="dataSave();return false;">
-            <input type="text" name="request" value="テストです"> <input type="submit" value="データを送信"><br>
-        </form>
-        <div id="result"></div>
+ 
     </center>
 </body>
 </html>
